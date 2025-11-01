@@ -1,0 +1,61 @@
+<div class="container">
+<p-stepper [value]="1" class="basis-[50rem]">
+    <p-step-list>
+        <p-step [value]="1">Selección de grupo</p-step>
+        <p-step [value]="2">Selección de rol</p-step>
+        <p-step [value]="3">Descarga de los archivos</p-step>
+    </p-step-list>
+    <p-step-panels>
+        <p-step-panel [value]="1">
+            <ng-template #content let-activateCallback="activateCallback">
+                <div class="flex align-items-center justify-content-center flex-col h-48">
+                    <div>
+                      <p-select [options]="groups()" [(ngModel)]="selectedGroup" placeholder="Seleccionar grupo" class="w-full md:w-56" appendTo="body"/>
+                    </div>
+                </div>
+                <div class="flex pt-6 justify-end gap-3">
+                    <p-button label="Siguiente" [disabled]="!selectedGroup" icon="pi pi-arrow-right" iconPos="right" (onClick)="activateCallback(2)" />
+                </div>
+            </ng-template>
+        </p-step-panel>
+
+        <p-step-panel [value]="2">
+            <ng-template #content let-activateCallback="activateCallback">
+                <div class="flex align-items-center justify-content-center flex-col h-48">
+                    <div>
+                      <p-select [options]="roles()" [(ngModel)]="selectedRole" placeholder="Seleccionar rol" class="w-full md:w-56" appendTo="body"/>
+                    </div>
+                </div>
+                <div class="flex pt-6 justify-between gap-3">
+                    <p-button label="Anterior" severity="secondary" icon="pi pi-arrow-left" (onClick)="activateCallback(1)" />
+                    <p-button label="Siguiente" icon="pi pi-arrow-right" iconPos="right" (onClick)="activateCallback(3)" [disabled]="!selectedRole" />
+                </div>
+            </ng-template>
+        </p-step-panel>
+
+        <p-step-panel [value]="3">
+            <ng-template #content let-activateCallback="activateCallback">
+                <div class="flex align-items-center justify-content-center flex-column gap-2">
+                  @if(token()) {
+                    @if (files()) {
+                      @if (files()! && files()!.length > 0) {
+                        <p-listbox [options]="files()!" optionLabel="name" class="w-full md:w-56" />
+                      }
+                      <p-button label="Descargar archivos" icon="pi pi-cloud-download" iconPos="right" (onClick)="downloadFiles()" />
+                    } @else {
+                      <p-button label="Listar archivos" icon="pi pi-arrow-circle-down" iconPos="right" (onClick)="listFiles()" />
+                    }
+                    
+                  } @else {
+                    <p-button label="Iniciar sesión" icon="pi pi-user" iconPos="right" (onClick)="login()" />
+                  }
+                  </div>
+                <div class="flex pt-6 justify-start">
+                    <p-button label="Anterior" icon="pi pi-arrow-left" iconPos="right" (onClick)="activateCallback(2)" />
+                </div>
+            </ng-template>
+        </p-step-panel>
+
+    </p-step-panels>
+</p-stepper>
+</div>
