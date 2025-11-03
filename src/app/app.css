@@ -1,0 +1,66 @@
+.listbox-container {
+  width: 100%;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.listbox-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #555;
+  background: #f4f4f5;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.file-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #fff;
+  background: #10b981;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.header-toolbar {
+  background-color: var(--surface-100);
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 0.75rem 1.5rem;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.footer-toolbar {
+  background-color: var(--surface-200);
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+  padding: 0.5rem 1.5rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-toolbar span {
+  font-size: 0.9rem;
+  color: var(--text-color-secondary);
+}
