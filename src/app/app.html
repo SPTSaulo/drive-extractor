@@ -81,11 +81,11 @@
         <ng-template #content let-activateCallback="activateCallback">
           <div class="flex align-items-center justify-content-center flex-col h-48">
             <div>
-              <p-select
+              <p-multiselect
                 [options]="roles()"
-                [(ngModel)]="selectedRole"
+                [(ngModel)]="selectedRoles"
                 placeholder="Seleccionar rol"
-                class="w-full md:w-56"
+                class="w-full md:w-80"
                 appendTo="body"
               />
             </div>
@@ -101,7 +101,7 @@
               label="Siguiente"
               icon="pi pi-arrow-right"
               iconPos="right"
-              [disabled]="!selectedRole"
+              [disabled]="!(selectedRoles && selectedRoles.length > 0)"
               (onClick)="listFolderFiles(); activateCallback(3)"
             />
           </div>
